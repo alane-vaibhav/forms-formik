@@ -1,5 +1,5 @@
 import React from "react";
-import { useFormik } from "formik";
+import { Formik, useFormik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 const initialValues = {
@@ -30,7 +30,7 @@ const initialValues = {
 // };
 
 const onSubmit = (value) => {
-  console.log(value);
+  console.log("value", value);
 };
 
 const validationSchema = Yup.object({
@@ -40,59 +40,75 @@ const validationSchema = Yup.object({
 });
 
 const BasicForm = () => {
-  const formik = useFormik({
-    initialValues,
-    onSubmit,
-    validationSchema,
-  });
-  console.log("formik errors", formik.errors);
+  //remove this when uses Formik
+  //   const formik = useFormik({
+  //     initialValues,
+  //     onSubmit,
+  //     validationSchema,
+  //   });
   return (
     <div className="main-from">
-      <form onSubmit={formik.handleSubmit}>
-        <div className="element">
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formik.values.name}
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-          />
-          {formik.touched.name ? (
-            <div className="error">{formik.errors.name}</div>
-          ) : null}
-        </div>
-        <div className="element">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formik.values.email}
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-          />
-          {formik.touched.email ? (
-            <div className="error">{formik.errors.email}</div>
-          ) : null}
-        </div>
-        <div className="element">
-          <label htmlFor="channel">Channel</label>
-          <input
-            type="text"
-            id="channel"
-            name="channel"
-            value={formik.values.channel}
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-          />
-          {formik.touched.channel ? (
-            <div className="error">{formik.errors.channel}</div>
-          ) : null}
-        </div>
-        <button type="submit">Submit</button>
-      </form>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={onSubmit}
+        validationSchema={validationSchema}
+      >
+        <Form>
+          <div className="element">
+            <label htmlFor="name">Name</label>
+            <Field
+              type="text"
+              id="name"
+              name="name"
+              //Remove properties by adding getFieldProps
+              // value={formik.values.name}
+              // onBlur={formik.handleBlur}
+              // onChange={formik.handleChange}
+              //{...formik.getFieldProps("name")}---after replacing input with Field
+            />
+            {/* {formik.touched.name ? (
+              <div className="error">{formik.errors.name}</div>
+            ) : null}
+            ---remove after adding Error message */}
+            <ErrorMessage name="name" />
+          </div>
+          <div className="element">
+            <label htmlFor="email">Email</label>
+            <Field
+              type="email"
+              id="email"
+              name="email"
+              //Remove properties by adding getFieldProps
+              // value={formik.values.email}
+              // onBlur={formik.handleBlur}
+              // onChange={formik.handleChange}
+              //{...formik.getFieldProps("email")}---after replacing input with Field
+            />
+            {/* {formik.touched.email ? (
+              <div className="error">{formik.errors.email}</div>
+            ) : null} */}
+            <ErrorMessage name="email" />
+          </div>
+          <div className="element">
+            <label htmlFor="channel">Channel</label>
+            <Field
+              type="text"
+              id="channel"
+              name="channel"
+              //Remove properties by adding getFieldProps
+              // value={formik.values.channel}
+              // onBlur={formik.handleBlur}
+              // onChange={formik.handleChange}
+              // {...formik.getFieldProps("channel")}---after replacing input with Field
+            />
+            {/* {formik.touched.channel ? (
+              <div className="error">{formik.errors.channel}</div>
+            ) : null} */}
+            <ErrorMessage name="channel" />
+          </div>
+          <button type="submit">Submit</button>
+        </Form>
+      </Formik>
     </div>
   );
 };
