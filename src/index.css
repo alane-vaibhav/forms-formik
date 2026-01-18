@@ -1,3 +1,19 @@
 * {
   margin: 0;
 }
+.main-from {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.element {
+  display: flex;
+  flex-direction: column;
+}
+
+.error {
+  color: red;
+}
