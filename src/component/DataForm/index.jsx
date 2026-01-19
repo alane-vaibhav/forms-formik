@@ -1,6 +1,7 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import React from "react";
 import * as Yup from "yup";
+import TextError from "./TextError";
 
 const initialValues = {
   name: "",
@@ -38,27 +39,32 @@ const ProfileDataForm = () => {
         <div>
           <label htmlFor="name">Name: </label>
           <Field type="text" id="name" name="name" />
-          <ErrorMessage name="name" />
+          <ErrorMessage name="name" component={TextError} />
         </div>
         <div>
           <label htmlFor="phNumber">Phone number: </label>
           <Field type="number" id="phNumber" name="phNumber" />
-          <ErrorMessage name="phNumber" />
+          <ErrorMessage name="phNumber" component={TextError} />
         </div>
         <div>
           <label htmlFor="address">Address</label>
           <Field type="text" id="address" name="address" />
-          <ErrorMessage name="address" />
+          <ErrorMessage name="address" component={TextError} />
         </div>
         <div>
           <label htmlFor="email">Email</label>
           <Field type="email" id="email" name="email" />
-          <ErrorMessage name="email" />
+          <ErrorMessage name="email" component={TextError} />
         </div>
         <div>
           <label htmlFor="comment">Comment</label>
           <Field as="textarea" type="comment" id="comment" name="comment" />
-          <ErrorMessage name="comment" />
+          <ErrorMessage name="comment">
+            {(errorMsg) => {
+              console.log(errorMsg);
+              return <div>{errorMsg}</div>;
+            }}
+          </ErrorMessage>
         </div>
         <div>
           <label htmlFor="address">Address</label>
@@ -68,9 +74,10 @@ const ProfileDataForm = () => {
               return (
                 <>
                   <input type="text" id="address" {...field} />
-                  {meta?.error && meta?.touched ? (
+                  {/* {meta?.error && meta?.touched ? (
                     <div>{meta?.error}</div>
-                  ) : null}
+                  ) : null} */}
+                  <ErrorMessage name="address" component={TextError} />
                 </>
               );
             }}
