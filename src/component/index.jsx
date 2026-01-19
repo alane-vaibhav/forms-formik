@@ -37,6 +37,8 @@ const validationSchema = Yup.object({
   name: Yup.string().required("required"),
   email: Yup.string().email("Invalid email format").required("required"),
   channel: Yup.string().required("required"),
+  comment: Yup.string().required("Add the comment"),
+  address: Yup.string().required("Please enter address"),
 });
 
 const BasicForm = () => {
@@ -105,6 +107,16 @@ const BasicForm = () => {
               <div className="error">{formik.errors.channel}</div>
             ) : null} */}
             <ErrorMessage name="channel" />
+          </div>
+          <div>
+            <label htmlFor="comment">Comment</label>
+            <Field as="textarea" type="comment" id="comment" name="comment" />
+            <ErrorMessage name="comment" />
+          </div>
+          <div>
+            <label htmlFor="address">Address</label>
+            <Field type="address" id="address" name="address" />
+            <ErrorMessage name="address" />
           </div>
           <button type="submit">Submit</button>
         </Form>

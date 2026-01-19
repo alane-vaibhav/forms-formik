@@ -7,6 +7,7 @@ const initialValues = {
   phNumber: "",
   address: "",
   email: "",
+  comment: "",
 };
 
 const validationSchema = Yup.object({
@@ -19,6 +20,7 @@ const validationSchema = Yup.object({
   email: Yup.string()
     .email("Enter valid email address")
     .required("Email is required"),
+  comment: Yup.string().required("Add the comment"),
 });
 
 const onSubmit = (values) => {
@@ -52,6 +54,27 @@ const ProfileDataForm = () => {
           <label htmlFor="email">Email</label>
           <Field type="email" id="email" name="email" />
           <ErrorMessage name="email" />
+        </div>
+        <div>
+          <label htmlFor="comment">Comment</label>
+          <Field as="textarea" type="comment" id="comment" name="comment" />
+          <ErrorMessage name="comment" />
+        </div>
+        <div>
+          <label htmlFor="address">Address</label>
+          <Field name="address">
+            {(props) => {
+              const { field, meta, form } = props;
+              return (
+                <>
+                  <input type="text" id="address" {...field} />
+                  {meta?.error && meta?.touched ? (
+                    <div>{meta?.error}</div>
+                  ) : null}
+                </>
+              );
+            }}
+          </Field>
         </div>
         <button type="submit">Submit</button>
       </Form>
