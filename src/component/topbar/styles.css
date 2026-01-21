@@ -1,0 +1,18 @@
+.mainBox {
+  display: flex;
+  padding: 20px 40px;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  background-color: blanchedalmond;
+  position: sticky;
+  top: 0;
+}
+
+.itemSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+}
