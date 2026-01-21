@@ -1,10 +1,10 @@
 .mainBox {
   display: flex;
-  padding: 20px 40px;
+  padding: 32px 0;
   justify-content: center;
   align-items: center;
   z-index: 100;
-  background-color: blanchedalmond;
+  background-color: rgb(255, 82, 0);
   position: sticky;
   top: 0;
 }
@@ -14,5 +14,15 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 90%;
+  width: 80%;
+  height: 54px;
+}
+.navigation,
+a {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+  font-family: Gilroy !important;
+  text-decoration: none;
+  color: white;
 }
