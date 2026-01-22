@@ -2,6 +2,7 @@ import React from "react";
 import "./style.css";
 import LeftImage from "../../assets/Veggies_new.avif";
 import RightImage from "../../assets/Sushi_replace.avif";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 const Homepagebanner = () => {
   return (
     <div className="home-banner">
