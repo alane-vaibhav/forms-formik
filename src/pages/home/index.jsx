@@ -1,7 +1,12 @@
 import React from "react";
+import MenuContainer from "./menuContainer";
 
 const HomePage = () => {
-  return <div className="messLayout">Home page</div>;
+  return (
+    <div className="layout">
+      <MenuContainer />
+    </div>
+  );
 };
 
 export default HomePage;
