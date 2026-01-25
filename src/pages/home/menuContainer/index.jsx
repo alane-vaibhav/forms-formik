@@ -6,7 +6,7 @@ const MenuContainer = () => {
   return (
     <div className="menuContainer">
       <div className="title">
-        <h2>Find menu here</h2>
+        <h2>Our Menu</h2>
       </div>
       <div className="eachItems">
         <div className="eachItem">

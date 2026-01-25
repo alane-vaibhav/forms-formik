@@ -1,0 +1,19 @@
+.footerContainer {
+  display: flex;
+  background-color: darkgrey;
+  padding: 50px 10%;
+}
+.footerContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: white;
+  width: 100%;
+}
+.pages {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  font-size: 16px;
+  font-weight: 600;
+}
